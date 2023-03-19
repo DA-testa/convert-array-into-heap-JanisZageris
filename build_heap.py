@@ -27,7 +27,7 @@ def sift_down(data, i): # build_heap funkcija bet at ačgārni
 def main():
     input_method = input()
 
-    if 'i' in input_method:
+    if 'I' in input_method:
         n = int(input())
         data = list(map(int, input().split()))
     elif 'F' in input_method:
