@@ -1,7 +1,7 @@
 # python3
 
 
-ef build_heap(data): # sift_down funkcija bet dod pareizos rezultātus
+def build_heap(data): # sift_down funkcija bet dod pareizos rezultātus
     swaps = []
     n = len(data)
     for i in range(n//2, -1, -1):
