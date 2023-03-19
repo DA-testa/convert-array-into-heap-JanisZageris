@@ -1,7 +1,7 @@
 # python3
 
 
-def build_heap(data): # sift_down funkcija bet dod pareizos rezultātus
+ef build_heap(data): # sift_down funkcija bet dod pareizos rezultātus
     swaps = []
     n = len(data)
     for i in range(n//2, -1, -1):
@@ -25,8 +25,19 @@ def sift_down(data, i): # build_heap funkcija bet at ačgārni
     return swaps
 
 def main():
-    n = int(input())
-    data = list(map(int, input().split()))
+    input_method = input()
+
+    if 'i' in input_method:
+        n = int(input())
+        data = list(map(int, input().split()))
+    elif 'F' in input_method:
+        file_name = input().strip()
+        with open(file_name, 'r') as f:
+            n = int(f.readline())
+            data = list(map(int, f.readline().split()))
+    else:
+        print('Invalid input method')
+        return
 
     assert len(data) == n
 
