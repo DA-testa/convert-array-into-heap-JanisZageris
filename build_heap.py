@@ -1,38 +1,50 @@
 # python3
 
+import os
 
-def build_heap(data):
+def build_heap(data): # sift_down funkcija bet dod pareizos rezultātus
     swaps = []
-    # TODO: Creat heap and heap sort
-    # try to achieve  O(n) and not O(n2)
-
+    n = len(data)
+    for i in range(n//2, -1, -1):
+        swaps += sift_down(data, i)
 
     return swaps
 
+def sift_down(data, i): # build_heap funkcija bet at ačgārni
+    swaps = []
+    n = len(data)
+    while 2*i+1 < n:
+        j = 2*i+1
+        if j+1 < n and data[j+1] < data[j]:
+            j += 1
+        if data[i] <= data[j]:
+            break
+        swaps.append((i, j))
+        data[i], data[j] = data[j], data[i]
+        i = j
+
+    return swaps
 
 def main():
-    
-    # TODO : add input and corresponding checks
-    # add another input for I or F 
-    # first two tests are from keyboard, third test is from a file
+    input_method = input()
 
+    if 'I' in input_method:
+        n = int(input())
+        data = list(map(int, input().split()))
+    elif 'F' in input_method:
+        file_name = input().strip()
+        file_path = os.path.join("tests", file_name)
+        with open(file_path, 'r') as file:
+            n = int(file.readline().strip())
+            data = list(map(int, file.readline().strip().split()))
+    else:
+        print('Invalid input method')
+        return
 
-    # input from keyboard
-    n = int(input())
-    data = list(map(int, input().split()))
-
-    # checks if lenght of data is the same as the said lenght
     assert len(data) == n
 
-    # calls function to assess the data 
-    # and give back all swaps
     swaps = build_heap(data)
 
-    # TODO: output how many swaps were made, 
-    # this number should be less than 4n (less than 4*len(data))
-
-
-    # output all swaps
     print(len(swaps))
     for i, j in swaps:
         print(i, j)
