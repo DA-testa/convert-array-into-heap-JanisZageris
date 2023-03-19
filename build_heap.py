@@ -35,8 +35,8 @@ def main():
         file_name = input().strip()
         file_path = os.path.join("test", file_name)
         with open(file_path, 'r') as file:
-            n = int(file.readline())
-            data = list(map(int, file.readline().split()))
+            n = int(file.readline().strip())
+            data = list(map(int, file.readline().strip().split()))
     else:
         print('Invalid input method')
         return
