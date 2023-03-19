@@ -1,5 +1,6 @@
 # python3
 
+import os
 
 def build_heap(data): # sift_down funkcija bet dod pareizos rezultātus
     swaps = []
@@ -32,9 +33,10 @@ def main():
         data = list(map(int, input().split()))
     elif 'F' in input_method:
         file_name = input().strip()
-        with open(file_name, 'r') as f:
-            n = int(f.readline())
-            data = list(map(int, f.readline().split()))
+        file_path = os.path.join("test", file_name)
+        with open(file_path, 'r') as file:
+            n = int(file.readline())
+            data = list(map(int, file.readline().split()))
     else:
         print('Invalid input method')
         return
