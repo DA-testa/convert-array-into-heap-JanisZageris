@@ -33,7 +33,7 @@ def main():
         data = list(map(int, input().split()))
     elif 'F' in input_method:
         file_name = input().strip()
-        file_path = os.path.join("test", file_name)
+        file_path = os.path.join("tests", file_name)
         with open(file_path, 'r') as file:
             n = int(file.readline().strip())
             data = list(map(int, file.readline().strip().split()))
